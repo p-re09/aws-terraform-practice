@@ -13,7 +13,7 @@ variable "project_name" {
 variable "ami_id" {
   description = "Amazon Linux 2023 AMI ID, eu-west-2"
   type        = string
-  default     = "ami-0c1c30571d2dae5c9"
+  default     = "ami-06f9e3b45a89cf4aa"
 }
 
 variable "key_pair_name" {
