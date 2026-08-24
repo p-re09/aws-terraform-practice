@@ -96,7 +96,7 @@ resource "aws_security_group" "app_sg" {
 # --- EC2 instance: free-tier eligible, runs the app via user_data ---
 resource "aws_instance" "app_server" {
   ami                    = var.ami_id
-  instance_type          = "t2.micro" # AWS free tier eligible
+  instance_type          = "t3.micro" # AWS free tier eligible
   iam_instance_profile   = aws_iam_instance_profile.ec2_profile.name
   vpc_security_group_ids = [aws_security_group.app_sg.id]
   key_name               = var.key_pair_name
