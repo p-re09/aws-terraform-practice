@@ -49,8 +49,8 @@ resource "aws_iam_role_policy" "s3_access" {
   policy = jsonencode({
     Version = "2012-10-17"
     Statement = [{
-      Effect = "Allow"
-      Action = ["s3:PutObject", "s3:GetObject", "s3:ListBucket"]
+      Effect   = "Allow"
+      Action   = ["s3:PutObject", "s3:GetObject", "s3:ListBucket"]
       Resource = [
         aws_s3_bucket.app_bucket.arn,
         "${aws_s3_bucket.app_bucket.arn}/*"
@@ -96,7 +96,7 @@ resource "aws_security_group" "app_sg" {
 # --- EC2 instance: free-tier eligible, runs the app via user_data ---
 resource "aws_instance" "app_server" {
   ami                    = var.ami_id
-  instance_type          = "t3.micro" # AWS free tier eligible
+  instance_type          = "t3.micro" # AWS free tier eligible in eu-west-2
   iam_instance_profile   = aws_iam_instance_profile.ec2_profile.name
   vpc_security_group_ids = [aws_security_group.app_sg.id]
   key_name               = var.key_pair_name
